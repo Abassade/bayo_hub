@@ -13,7 +13,16 @@ const admin = (app)=>{
         console.log('[x] createAdmin endpoint called...');
         adminController.createAdmin(req, res)
     });
-      
+
+
+    app.put('/updateAdmin/:id', (req, res)=>{
+        console.log('[x] updateAdmin endpoint called...');
+        adminController.updateAdmin(req, res)        
+    });
+    app.get('/getAllAdmin', (req, res)=>{
+        console.log('[x] getallAdmin endpoint called...');
+        adminController.getAllAdmin(req, res)
+    });
 }
 
 module.exports = admin;

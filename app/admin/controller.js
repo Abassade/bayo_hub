@@ -33,6 +33,46 @@ class Admin {
             });
         }
     }
-}
+    async getAllAdmin(req, res){
+       try{
+         const admin = await AdminModel.find(req.body)
+             return res.send({
+                 success: true,
+                 message: 'all admin sucessfully retrieved',
+                 data:admin
+             });
 
+    }
+
+         catch (error) {
+          console.log(error);
+          return res.send({
+            success: false,
+            message: 'Internal server error',
+            error,
+        });
+}
+    }
+async updateAdmin(req, res){
+    try{
+      const {id}= req.params;
+      const admin = await AdminModel.findByIdAndUpdate({_id: id}, req.body)
+          return res.send({
+              success: true,
+              message: 'Admin identity ready for update',
+              data:admin
+          });
+
+ }
+
+      catch (error) {
+       console.log(error);
+       return res.send({
+         success: false,
+         message: 'Internal server error',
+         error,
+     });
+    }
+}
+}
 module.exports = new Admin();
