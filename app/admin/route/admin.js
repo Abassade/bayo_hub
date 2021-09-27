@@ -13,7 +13,10 @@ const admin = (app)=>{
         console.log('[x] createAdmin endpoint called...');
         adminController.createAdmin(req, res)
     });
-
+    app.post('/loginAdmin', (req, res)=>{
+        console.log('[x] loginAdmin endpoint called...');
+        adminController.loginAdmin(req, res)
+    });
 
     app.put('/updateAdmin/:id', (req, res)=>{
         console.log('[x] updateAdmin endpoint called...');
