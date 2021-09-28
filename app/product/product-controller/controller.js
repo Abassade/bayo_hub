@@ -1,5 +1,6 @@
 const ProductModel = require('../product-model/product')
 const createProductSchema = require('../product-schema/createProduct')
+
 const AdminModel =require('../../admin/model/admin')
 
 
@@ -33,6 +34,7 @@ class Product {
             req.body.adminID = req.adminID
             // This is to create a product
             const newProduct = (await ProductModel.create(req.body)).toJSON();
+        
             return res.send({
                 success: true,
                 message: 'Product successfully created',

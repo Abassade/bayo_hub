@@ -1,5 +1,6 @@
 const AdminModel = require('./model/admin');
 const createAdminSchema = require('./schema/createAdmin');
+const sendEmail =  require('../../app/helpers/sendEmail')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -19,6 +20,8 @@ class Admin {
             }
             req.body.password = bcrypt.hashSync(req.body.password, 10);
             const newAdmin = (await AdminModel.create(req.body)).toJSON();
+            // send a welcome email
+            sendEmail({email, title, subject, body:emailbody}) 
             delete newAdmin.password;
             return res.send({
                 success: true,
